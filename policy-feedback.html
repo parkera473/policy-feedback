@@ -20,7 +20,7 @@
   .h-inner { max-width: 700px; margin: 0 auto; }
   .eyebrow { font-size: 11px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: #8A9E8F; margin-bottom: 10px; }
   header h1 { font-family: 'Lora', serif; font-size: 26px; font-weight: 500; margin-bottom: 8px; }
-  header p { font-size: 14px; color: #BFBBB4; line-height: 1.6; max-width: 480px; }
+  header p { font-size: 14px; color: #BFBBB4; line-height: 1.6; max-width: 520px; }
 
   main { max-width: 700px; margin: 0 auto; padding: 2rem 2rem 4rem; }
 
@@ -50,7 +50,7 @@
   .doc-status.ok { background: var(--accent-light); color: #1E4A28; border: 1px solid #B8D9C0; display: block; }
   .doc-status.err { background: var(--red-light); color: var(--red); border: 1px solid #EAB0B0; display: block; }
 
-  .tog-row { display: flex; gap: 8px; }
+  .tog-row { display: flex; gap: 8px; flex-wrap: wrap; }
   .tog { font-size: 13px; padding: 6px 16px; border-radius: 20px; border: 1px solid var(--rule); background: var(--cream); color: var(--ink-2); cursor: pointer; font-family: 'DM Sans', sans-serif; }
   .tog:hover { border-color: var(--ink-3); }
   .tog.on { background: var(--ink); color: var(--cream); border-color: var(--ink); }
@@ -67,30 +67,37 @@
   #results { display: none; }
   #results.on { display: block; }
 
-  .banner { display: flex; align-items: center; gap: 16px; padding: 1.25rem 1.5rem; background: var(--ink); border-radius: var(--r); margin-bottom: 12px; }
-  .circle { width: 64px; height: 64px; border-radius: 50%; border: 2px solid rgba(255,255,255,.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .circle span { font-family: 'Lora', serif; font-size: 20px; font-weight: 600; color: white; }
-  .banner-txt h2 { font-family: 'Lora', serif; font-size: 17px; font-weight: 500; color: white; margin-bottom: 5px; }
-  .banner-txt p { font-size: 13px; color: #BFBBB4; line-height: 1.5; }
+  .result-banner { background: var(--ink); border-radius: var(--r); padding: 1.5rem; margin-bottom: 16px; }
+  .result-banner h2 { font-family: 'Lora', serif; font-size: 19px; font-weight: 500; color: white; margin-bottom: 6px; }
+  .result-banner p { font-size: 13px; color: #BFBBB4; line-height: 1.6; }
 
-  .sec { border: 1px solid var(--rule); border-radius: var(--r); margin-bottom: 8px; overflow: hidden; background: var(--paper); }
-  .sec-top { display: flex; align-items: center; justify-content: space-between; padding: 11px 15px; }
-  .sec-name { font-size: 13px; font-weight: 500; }
-  .pill { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; }
-  .pill-good { background: var(--accent-light); color: #1E4A28; }
-  .pill-needs { background: var(--amber-light); color: #7A430E; }
-  .pill-bad { background: var(--red-light); color: var(--red); }
-  .sec-body { padding: 10px 15px; font-size: 13px; line-height: 1.7; color: var(--ink-2); border-top: 1px solid var(--rule); }
+  .ai-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+  .ai-card { background: var(--paper); border: 1px solid var(--rule); border-radius: var(--r); padding: 14px; text-align: center; cursor: pointer; transition: all 0.15s; }
+  .ai-card:hover { border-color: var(--accent); }
+  .ai-card.selected { border-color: var(--accent); background: var(--accent-light); }
+  .ai-card .ai-icon { font-size: 24px; margin-bottom: 6px; }
+  .ai-card .ai-name { font-size: 13px; font-weight: 500; color: var(--ink); }
+  .ai-card .ai-desc { font-size: 11px; color: var(--ink-3); margin-top: 2px; }
 
-  .wrap-up { margin-top: 10px; padding: 13px 15px; background: var(--cream); border: 1px solid var(--rule); border-radius: var(--r); }
-  .wrap-up strong { font-size: 13px; font-weight: 500; display: block; margin-bottom: 5px; }
-  .wrap-up p { font-size: 13px; color: var(--ink-2); line-height: 1.7; }
+  .prompt-box-wrap { margin-bottom: 14px; }
+  .prompt-box-wrap label.lbl { margin-bottom: 8px; }
+  .prompt-box { width: 100%; min-height: 280px; padding: 12px 14px; font-family: 'DM Sans', sans-serif; font-size: 13px; line-height: 1.65; color: var(--ink-2); background: var(--cream); border: 1px solid var(--rule); border-radius: var(--r); resize: vertical; }
 
-  .back-btn { width: 100%; margin-top: 14px; padding: 11px; font-family: 'DM Sans', sans-serif; font-size: 13px; background: transparent; border: 1px solid var(--rule); border-radius: var(--r); color: var(--ink-2); cursor: pointer; }
+  .copy-btn { width: 100%; padding: 13px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; background: var(--accent); color: white; border: none; border-radius: var(--r); cursor: pointer; margin-bottom: 10px; }
+  .copy-btn:hover { background: #245032; }
+  .copy-btn.copied { background: #1E4A28; }
+
+  .next-steps-box { background: var(--amber-light); border: 1px solid #E8C090; border-radius: var(--r); padding: 14px 16px; margin-bottom: 14px; }
+  .next-steps-box strong { font-size: 13px; font-weight: 500; display: block; margin-bottom: 8px; color: var(--amber); }
+  .next-steps-box ol { padding-left: 18px; font-size: 13px; color: var(--ink-2); line-height: 1.85; }
+  .next-steps-box ol strong { color: var(--ink); display: inline; }
+
+  .back-btn { width: 100%; margin-top: 4px; padding: 11px; font-family: 'DM Sans', sans-serif; font-size: 13px; background: transparent; border: 1px solid var(--rule); border-radius: var(--r); color: var(--ink-2); cursor: pointer; }
   .back-btn:hover { background: var(--rule); }
 
   @media (max-width: 540px) {
     .two-col { grid-template-columns: 1fr; }
+    .ai-options { grid-template-columns: 1fr 1fr; }
     header { padding: 1.5rem 1.25rem; }
     main { padding: 1.25rem 1.25rem 3rem; }
     .card-body { padding: 1rem 1.125rem; }
@@ -103,7 +110,7 @@
   <div class="h-inner">
     <div class="eyebrow">Policy Research &amp; Civic Engagement</div>
     <h1>Check Your Draft Before You Turn It In</h1>
-    <p>Share your Google Doc below and you'll get feedback on every section of the rubric — so you know exactly what to strengthen before your teacher grades it.</p>
+    <p>Share your Google Doc below. We'll build a prompt you can paste into any AI — Claude, ChatGPT, Deedee, or whatever your school uses — to get feedback on your draft.</p>
   </div>
 </header>
 
@@ -172,35 +179,82 @@
       </div>
     </div>
 
-    <button class="submit-btn" id="go" onclick="run()">Get my feedback →</button>
+    <button class="submit-btn" id="go" onclick="buildPrompt()">Build my feedback prompt →</button>
     <div id="err"></div>
   </div>
 
   <div id="results">
-    <div class="banner">
-      <div class="circle" id="circle"><span id="pct">—</span></div>
-      <div class="banner-txt">
-        <h2 id="headline"></h2>
-        <p id="subhead"></p>
+    <div class="result-banner">
+      <h2>Your feedback prompt is ready!</h2>
+      <p>Pick your AI below, copy the prompt, and paste it in. You'll get section-by-section feedback based on your teacher's rubric.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <label class="lbl" style="margin-bottom:10px;">Which AI will you use?</label>
+        <div class="ai-options">
+          <div class="ai-card selected" onclick="selectAI(this,'claude')" id="ai-claude">
+            <div class="ai-icon">🟠</div>
+            <div class="ai-name">Claude</div>
+            <div class="ai-desc">claude.ai</div>
+          </div>
+          <div class="ai-card" onclick="selectAI(this,'chatgpt')" id="ai-chatgpt">
+            <div class="ai-icon">🟢</div>
+            <div class="ai-name">ChatGPT</div>
+            <div class="ai-desc">chatgpt.com</div>
+          </div>
+          <div class="ai-card" onclick="selectAI(this,'deedee')" id="ai-deedee">
+            <div class="ai-icon">🏫</div>
+            <div class="ai-name">Deedee</div>
+            <div class="ai-desc">School AI</div>
+          </div>
+        </div>
+
+        <div class="prompt-box-wrap">
+          <label class="lbl">Your prompt — copy this and paste it into your AI</label>
+          <textarea class="prompt-box" id="prompt-box" readonly></textarea>
+        </div>
+
+        <button class="copy-btn" id="copy-btn" onclick="copyPrompt()">📋 Copy prompt</button>
       </div>
     </div>
-    <div id="secs"></div>
-    <div class="wrap-up" id="wrapup" style="display:none">
-      <strong>Before you turn it in:</strong>
-      <p id="wrapup-txt"></p>
+
+    <div class="next-steps-box">
+      <strong>What to do next:</strong>
+      <ol>
+        <li>Click <strong>Copy prompt</strong> above</li>
+        <li>Open your AI (<strong id="ai-link-label">claude.ai</strong>)</li>
+        <li><strong>Paste</strong> the prompt and hit send</li>
+        <li>Read the feedback, revise your draft, then come back and build a new prompt to check again</li>
+      </ol>
     </div>
+
     <button class="back-btn" onclick="reset()">← Go back and revise</button>
   </div>
 </main>
 
 <script>
-let bm=null, dt='', bt='';
+let bm=null, dt='', bt='', selectedAI='claude';
+
+const aiLinks = {
+  claude: 'claude.ai',
+  chatgpt: 'chatgpt.com',
+  deedee: 'your school\'s Deedee'
+};
 
 function toggleBrief(v){
   bm=v;
   document.getElementById('ty').classList.toggle('on',v==='yes');
   document.getElementById('tn').classList.toggle('on',v==='no');
   document.getElementById('brief-wrap').style.display=v==='yes'?'block':'none';
+}
+
+function selectAI(el, ai) {
+  selectedAI = ai;
+  document.querySelectorAll('.ai-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('ai-link-label').textContent = aiLinks[ai];
+  updatePrompt();
 }
 
 function exportUrl(url){
@@ -242,9 +296,37 @@ async function checkBrief(){
   }catch(e){ bt=''; el.className='doc-status err'; el.textContent='✗ '+e.message; }
 }
 
-async function run(){
-  const ptype=document.getElementById('ptype').value;
-  const topic=document.getElementById('topic').value.trim();
+function buildPromptText(ptype, topic) {
+  return `You are giving a student direct, friendly, and honest pre-submission feedback on their policy research civic engagement product. Speak directly to the student using "you" and "your." Be encouraging but truthful. Your job is to help them improve before their teacher grades it.
+
+The rubric has 7 sections. For each one, give the student a status (Looking good / Needs work / Missing) and 1-2 specific sentences of feedback referencing their actual writing. Then finish with an overall note.
+
+RUBRIC SECTIONS:
+1. Formatting & layout (20 pts) — Does the format fit the topic and audience? Does it look polished and finished?
+2. Audience & delivery (20 pts) — Is the audience specific and intentional? Is the tone/language right for them?
+3. Organization & content (35 pts) — Strong intro? Clear thesis with a policy stance and urgency? Full explanation of the problem (causes + effects)? Specific evidence-backed solutions? Strong conclusion with a call to action?
+4. History brief (20 pts) — Is there enough background on when/how the issue started, key people/events, and legal context?
+5. Use of research (25 pts) — Enough sources? Does the student's own voice carry the argument (not just a string of quotes)? Balance of expert quotes AND data/statistics? Sources properly introduced? Enough student commentary between sources?
+6. Works cited / citations (20 pts) — Is a works cited page included? Correctly formatted? Do all in-text citations match?
+7. Mechanics (10 pts) — Spelling, grammar, punctuation.
+
+STUDENT INFO:
+Product type: ${ptype || 'not specified'}
+Policy topic: ${topic || 'not specified'}
+${bt ? '\nHISTORY BRIEF (separate document):\n' + bt + '\n' : ''}
+STUDENT DRAFT:
+${dt}
+
+Please give feedback on each of the 7 sections, then finish with a 2-3 sentence overall note telling the student what they should feel good about and the 1-2 most important things to fix before turning it in.`;
+}
+
+function updatePrompt() {
+  const ptype = document.getElementById('ptype').value;
+  const topic = document.getElementById('topic').value.trim();
+  document.getElementById('prompt-box').value = buildPromptText(ptype, topic);
+}
+
+async function buildPrompt(){
   const docUrl=document.getElementById('doc-url').value.trim();
 
   if(!dt && docUrl){ try{ await checkDoc(); }catch(e){} }
@@ -256,74 +338,30 @@ async function run(){
   document.getElementById('err').innerHTML='';
   const btn=document.getElementById('go');
   btn.disabled=true;
-  btn.innerHTML='<span class="spinner"></span>Reading your draft…';
+  btn.innerHTML='<span class="spinner"></span>Building your prompt…';
 
-  const sys=`You are giving a student direct, friendly, and honest pre-submission feedback on their policy research civic engagement product. Always speak directly to the student using "you" and "your." Be encouraging but truthful. Your job is to help them improve — not to be their final grade.
+  // Small delay for effect
+  await new Promise(r => setTimeout(r, 600));
 
-Rubric sections:
-1. Formatting & layout (20 pts) — format fits topic/audience, product looks polished and finished
-2. Audience & delivery (20 pts) — audience is specific and intentional, tone/language calibrated for them
-3. Organization & content (35 pts) — strong intro, clear thesis with policy stance and urgency, full problem explanation with causes/effects, specific evidence-backed solutions, strong conclusion with call to action
-4. History brief (20 pts) — sufficient background on when/how the issue started, key people/events, legal context; can be inside the product or a separate brief
-5. Use of research (25 pts) — sufficient sources, your voice carries the argument (not just quotes), balance of expert quotes AND data/statistics, sources properly introduced, enough of your own commentary between sources
-6. Works cited / citations (20 pts) — works cited page included, correctly formatted, all in-text citations match
-7. Mechanics (10 pts) — spelling, grammar, punctuation
-
-Write all feedback in second person. Be specific — reference actual content from their draft. Tell them what's working and exactly what to do to fix anything that isn't.
-
-Respond ONLY with a valid JSON object, no markdown fences:
-{"readiness":72,"headline":"You're in good shape — a few things to tighten up","subhead":"One encouraging but honest sentence to the student.","sections":[{"name":"Formatting & layout","status":"good|needs-work|missing","feedback":"Direct 1-2 sentence feedback to the student."},{"name":"Audience & delivery","status":"good|needs-work|missing","feedback":"..."},{"name":"Organization & content","status":"good|needs-work|missing","feedback":"..."},{"name":"History brief","status":"good|needs-work|missing","feedback":"..."},{"name":"Use of research","status":"good|needs-work|missing","feedback":"..."},{"name":"Works cited / citations","status":"good|needs-work|missing","feedback":"..."},{"name":"Mechanics","status":"good|needs-work|missing","feedback":"..."}],"overall":"2-3 sentences to the student: what to feel good about and the 1-2 most important things to fix before turning it in."}`;
-
-  const msg=`Product type: ${ptype||'not specified'}\nPolicy topic: ${topic||'not specified'}\n${bt?'\nHISTORY BRIEF:\n'+bt+'\n':''}\nSTUDENT DRAFT:\n${dt}`;
-
-  try{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:sys,messages:[{role:'user',content:msg}]})
-    });
-    const data=await r.json();
-    const raw=(data.content||[]).map(b=>b.text||'').join('').trim();
-    const parsed=JSON.parse(raw.replace(/```json|```/g,'').trim());
-    render(parsed);
-  }catch(e){
-    document.getElementById('err').innerHTML='<div class="err-box">Something went wrong — please try again in a moment.</div>';
-    console.error(e);
-  }finally{
-    btn.disabled=false;
-    btn.innerHTML='Get my feedback →';
-  }
-}
-
-function render(d){
-  const pct=Math.round(d.readiness||0);
-  const color=pct>=75?'#2C5F3A':pct>=50?'#A05C1A':'#A02020';
-  document.getElementById('circle').style.borderColor=color;
-  document.getElementById('pct').textContent=pct+'%';
-  document.getElementById('pct').style.color='white';
-  document.getElementById('headline').textContent=d.headline||'';
-  document.getElementById('subhead').textContent=d.subhead||'';
-
-  const pc={'good':'pill-good','needs-work':'pill-needs','missing':'pill-bad'};
-  const pl={'good':'Looking good ✓','needs-work':'Needs work','missing':'Missing / weak'};
-
-  document.getElementById('secs').innerHTML=(d.sections||[]).map(s=>`
-    <div class="sec">
-      <div class="sec-top">
-        <span class="sec-name">${s.name}</span>
-        <span class="pill ${pc[s.status]||'pill-needs'}">${pl[s.status]||s.status}</span>
-      </div>
-      <div class="sec-body">${s.feedback}</div>
-    </div>`).join('');
-
-  if(d.overall){
-    document.getElementById('wrapup-txt').textContent=d.overall;
-    document.getElementById('wrapup').style.display='block';
-  }
+  updatePrompt();
+  document.getElementById('ai-link-label').textContent = aiLinks[selectedAI];
 
   document.getElementById('form').style.display='none';
   document.getElementById('results').classList.add('on');
   window.scrollTo({top:0,behavior:'smooth'});
+
+  btn.disabled=false;
+  btn.innerHTML='Build my feedback prompt →';
+}
+
+function copyPrompt(){
+  const text = document.getElementById('prompt-box').value;
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn = document.getElementById('copy-btn');
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(()=>{ btn.textContent='📋 Copy prompt'; btn.classList.remove('copied'); }, 2500);
+  });
 }
 
 function reset(){
